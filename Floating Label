@@ -1,0 +1,58 @@
+import React, { useState, useRef } from "react";
+import "./index.css";
+
+const App = () => {
+  const [value, setValue]  = useState(""); 
+  const [focus, setFocus] = useState(false);
+  const inputRef = useRef(null);
+  const handleClick = () => {
+    setFocus(true);
+    console.log("clicked",inputRef);
+    inputRef.current.focus();
+  }
+  const handleFocus = () => {
+    setFocus(true);
+    inputRef.current.focus();
+  }
+  const handleBlur = () => {
+    setFocus(false);
+  }
+  return (
+    <div className="w-full h-screen flex justify-center items-center"
+    > 
+      <div className={`relative w-[350px] h-[80px]  flex justify-start items-center border border-gray-300 rounded-lg
+      shadow-[0px_-0px_25px_-3px_rgba(0,0,0,0.2)]  hover:shadow-gray-600/70 overflow-hidden
+        ${focus && "border-blue-500"}
+      `}
+        onClick={handleClick}
+      >
+        <input 
+          type="text"
+          id="email"
+          ref={inputRef}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder=""
+          className="w-[99%] outline-none px-4 autofocus"
+          onBlur={handleBlur}
+        />
+        <div className={`absolute top-0 w-[100%] flex items-center  transition-all pl-4
+          ${focus || value ? "h-[20px]" : "h-[100%]"}`}
+          tabIndex={1}
+          onFocus={handleFocus}
+        >
+          <span className={` text-gray-700 ${focus ? "text-sm font-thin" : "text-md font-extralight" }`}>Email address</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
+{/* <div className={`relative w-[350px] h-[80px] flex justify-start items-center border border-gray-300 rounded-lg
+  shadow-[0px_-5px_15px_-3px_rgba(0,0,0,0.2)] hover:shadow-gray-600/70 overflow-hidden
+  ${focus && "border-blue-500"}
+`}
+  onClick={handleClick}
+> */}
