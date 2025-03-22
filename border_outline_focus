@@ -1,0 +1,17 @@
+import React, { useState, useRef } from "react";
+
+const App = () => {
+  
+  
+
+  return (
+    
+    <div className="w-full h-[100vh] bg-black flex flex-col justify-center items-center gap-5">
+      <input type="text" className="border-2 border-green-500 outline outline-2 outline-orange-500  p-2 focus:ring-4 focus:ring-violet-500"/>
+      <input type="text" className="border-2 border-green-500  outline-4 outline-orange-500 focus:ring-2 focus:ring-violet-500  p-2 "/>
+
+    </div>
+  );
+};
+
+export default App;
